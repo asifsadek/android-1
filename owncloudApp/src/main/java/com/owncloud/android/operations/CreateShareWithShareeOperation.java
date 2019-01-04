@@ -4,7 +4,7 @@
  *   @author masensio
  *   @author David A. Velasco
  *   @author Christian Schabesberger
- *   Copyright (C) 2018 ownCloud GmbH.
+ *   Copyright (C) 2019 ownCloud GmbH.
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License version 2,
@@ -28,7 +28,7 @@ import com.owncloud.android.lib.common.OwnCloudClient;
 import com.owncloud.android.lib.common.operations.RemoteOperationResult;
 import com.owncloud.android.lib.resources.files.FileUtils;
 import com.owncloud.android.lib.resources.shares.CreateRemoteShareOperation;
-import com.owncloud.android.lib.resources.shares.OCShare;
+import com.owncloud.android.lib.resources.shares.RemoteShare;
 import com.owncloud.android.lib.resources.shares.ShareParserResult;
 import com.owncloud.android.lib.resources.shares.ShareType;
 import com.owncloud.android.operations.common.SyncOperation;
@@ -82,7 +82,7 @@ public class CreateShareWithShareeOperation extends SyncOperation {
 
         if (result.isSuccess()) {
             if (!result.getData().getShares().isEmpty()) {
-                OCShare share = result.getData().getShares().get(0);
+                RemoteShare share = result.getData().getShares().get(0);
                 updateData(share);
             } 
         }
@@ -94,7 +94,7 @@ public class CreateShareWithShareeOperation extends SyncOperation {
         return mPath;
     }
 
-    private void updateData(OCShare share) {
+    private void updateData(RemoteShare share) {
         // Update DB with the response
         share.setPath(mPath);
         share.setIsFolder(mPath.endsWith(FileUtils.PATH_SEPARATOR));

@@ -3,7 +3,7 @@
  *
  *   @author masensio
  *   @author David González Verdugo
- *   Copyright (C) 2018 ownCloud GmbH.
+ *   Copyright (C) 2019 ownCloud GmbH.
  *
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License version 2,
@@ -55,7 +55,7 @@ public class GetSharesForFileAsyncTask extends AsyncTask<Object, Void, Pair<Remo
     protected Pair<RemoteOperation, RemoteOperationResult> doInBackground(Object... params) {
 
         GetSharesForFileOperation operation = null;
-        RemoteOperationResult result = null;
+        RemoteOperationResult result;
 
         if (params != null && params.length == 3) {
             OCFile file = (OCFile) params[0];
